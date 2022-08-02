@@ -14,6 +14,7 @@
 .hide {
     visibility: hidden;
     opacity: 0;
+    height: 0;
     transition: visibility .4s all;
 }
 
@@ -26,14 +27,15 @@
 }
 
 .m-5 {
-    margin: .6em;
+    margin: .8em;
 }
 
 .form {
     background: linear-gradient(60deg, #accbee, #e7f0fd);
     padding: 0 0 20px;
     transition: .4s all;
-    border-radius: 15px;
+    border-radius: 0 0 15px 15px;
+
 }
 
 .form input {
@@ -85,31 +87,13 @@
     overflow: hidden;
 }
 
-.btn-submit>span {
+.btn>span {
     position: absolute;
     transform: translate(-50%, -50%);
-    background-color: #d4d2d2;
+    background-color: #bdbdbd;
     border-radius: 50%;
     pointer-events: none;
     animation: ripples .6s linear infinite;
-}
-
-.btn-submit {
-    background-color: #4dc1bf;
-    color: #fff;
-}
-
-.btn-login,
-.btn-signup {
-    font-family: "staaliches", cursive;
-}
-
-.btn-signup {
-    border-radius: 15px 0 0 0;
-}
-
-.btn-login {
-    border-radius: 0 15px 0 0;
 }
 
 @keyframes ripples {
@@ -126,12 +110,79 @@
     }
 }
 
+.btn-submit {
+    background-color: #4dc1bf;
+    color: #fff;
+    margin-top: .6em;
+}
+
+.btn-login,
+.btn-signup,
+.btn-submit {
+    font-family: "staaliches", cursive;
+}
+
+.btn-signup {
+    border-radius: 15px 0 0 0;
+    background: linear-gradient(270deg, #accbee, #e7f0fd);
+}
+
+.btn-login {
+    border-radius: 0 15px 0 0;
+    background: linear-gradient(to left, #accbee, #e7f0fd);
+}
+
+
 .icon {
     color: rgb(70, 70, 70);
-    right: 75px;
+    right: 50px;
 
 }
 
 .flexd-col {
     flex-direction: column;
+}
+
+.small {
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+}
+
+.error input {
+    border-color: #ef5350 !important;
+    transition: 0.6s all !important;
+}
+
+.error small {
+    color: #d90700;
+
+}
+
+.success input {
+    border-color: #66bb6a !important;
+    transition: 0.6s all !important;
+}
+
+.w-100 small {
+    visibility: hidden;
+}
+
+.error small {
+    visibility: visible !important;
+}
+
+
+.login {
+    top: 104px;
+}
+
+.new-user span {
+    transition: .4s all;
+}
+
+
+.new-user:hover span {
+    color: #2d8fdf;
+    cursor: pointer;
 }
