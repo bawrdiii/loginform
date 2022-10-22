@@ -8,14 +8,13 @@
 .show {
     visibility: visible;
     opacity: 1;
-    transition: visibility .4s all;
 }
 
 .hide {
     visibility: hidden;
     opacity: 0;
     height: 0;
-    transition: visibility .4s all;
+    transition: visibility .4s linear;
 }
 
 .w-100 {
@@ -185,4 +184,27 @@
 .new-user:hover span {
     color: #2d8fdf;
     cursor: pointer;
+}
+
+/* Caps lock detected */
+.icon-after {
+    right: 0;
+    bottom: 20px;
+    color: rgb(255, 29, 29);
+    animation: danger .6s infinite ease alternate;
+    display: none;
+}
+
+.d-block {
+    display: block;
+}
+
+@keyframes danger {
+    from {
+        filter: drop-shadow(0 0 5px #a30707);
+    }
+
+    to {
+        filter: drop-shadow(0 0 10px #ff0000);
+    }
 }

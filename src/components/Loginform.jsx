@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEnvelope, faLock, faUser, faPhone } from "@fortawesome/free-solid-svg-icons"
+import { faEnvelope, faLock, faUser, faPhone, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
 import "./login.css"
+import { useEffect } from "react"
 const LoginForm = () => {
 
     const [signUp, setSignUp] = useState(true)
@@ -43,7 +44,7 @@ const LoginForm = () => {
 
 
             if (email.trim() === "") {
-                setError(emailInput, `Please enter a email`)
+                setError(emailInput, `Please enter an email`)
             } else {
                 setSuccess(emailInput)
             }
@@ -53,7 +54,7 @@ const LoginForm = () => {
             else {
                 setSuccess(userNameInput)
             }
-            if (phoneNumber.length < 11 || phoneNumber.length < 11 && phoneNumber === "") {
+            if (phoneNumber.length < 11 && phoneNumber === "") {
                 setError(phoneInput, `Enter a valid phone number`)
             }
             else {
@@ -130,7 +131,25 @@ const LoginForm = () => {
     }
 
 
-
+    useEffect((e) => {
+        var input = document.querySelectorAll(`input[type=password]`)
+        var icons = document.querySelectorAll(".icon-after")
+        input.forEach((item) => {
+            item.addEventListener("keyup", (event) => {
+                if (event.getModifierState("CapsLock")) {
+                    icons.forEach((item) => {
+                        item.classList.add("d-block")
+                    }
+                    )
+                }
+                else {
+                    icons.forEach((item) => {
+                        item.classList.remove("d-block")
+                    })
+                }
+            })
+        })
+    }, [])
 
 
 
@@ -213,6 +232,11 @@ const LoginForm = () => {
 
                                 <label htmlFor="pass" className="w-100 p-relative">
                                     <FontAwesomeIcon icon={faLock} className="p-absolute icon" />
+                                    <FontAwesomeIcon
+                                        icon={faTriangleExclamation}
+                                        className="p-absolute icon-after"
+                                        title="Capslock is on!"
+                                    />
                                     <input
                                         type="password"
                                         name="password"
@@ -230,6 +254,10 @@ const LoginForm = () => {
                             <div className="dflex jsc-spbt p-relative">
 
                                 <label htmlFor="repass" className="w-100 p-relative">
+                                    <FontAwesomeIcon icon={faTriangleExclamation}
+                                        className="p-absolute icon-after"
+                                        title="Capslock is on!" />
+
                                     <FontAwesomeIcon icon={faLock} className="p-absolute icon" />
                                     <input
                                         type="password"
@@ -274,11 +302,12 @@ const LoginForm = () => {
                             <div className="dflex jsc-spbt p-relative ">
                                 <label htmlFor="userPass" className="w-100 p-relative">
                                     <FontAwesomeIcon icon={faLock} className="p-absolute icon" />
+                                    <FontAwesomeIcon icon={faTriangleExclamation} className="p-absolute icon-after" />
                                     <input
                                         type="password"
                                         name="userPassword"
                                         id="userPass"
-                                        placeholder="someone@something.com"
+                                        placeholder="Password"
                                     />
                                     <small className="small"></small>
                                 </label>
